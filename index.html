@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      font-size: 1.2em;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .tool {
+      border-radius: 50%;
+      padding: 0.4rem;
+      margin: 0.2rem;
+    }
+
+    .tool:hover {
+      cursor: pointer;
+    }
+
+    .tool.noclick {
+      pointer-events: none;
+    }
+
+    .tool.selected {
+      border: 4px solid black;
+    }
+
+    .tool.selected.computer {
+      border-style: dashed;
+    }
+
+  </style>
+  <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+  <div id="rock">🪨 Rock</div>
+  <div id="paper">📃 Paper</div>
+  <div id="scissors">✂️ Scissors</div>
+  <h3 id="info"></h3>
+  <button id="really">Yes</button>
+  <button id="repeat">Play again</button>
+
+  <script>
+    const tools = [scissors, paper, rock]
+    const hiddens = [repeat, really]
+    const empties = [info]
+
+    resetGame()
+    addClickBehaviors()
+
+    function resetGame() {
+      for (let tool of tools) {
+        tool.className = 'tool'
+      }
+      for (let empty of empties) {
+        empty.textContent = ''
+      }
+      for (let hidden of hiddens) {
+        hidden.className = 'hidden'
+      }
+    }
+
+    function addClickBehaviors() {
+      tools.forEach(tool => tool.addEventListener('click', selectTool))
+      repeat.addEventListener('click', resetGame)
+      really.addEventListener('click', play)
+    }
+
+    function selectTool(clickEvent) {
+      const clickedTool = clickEvent.target
+      for (let tool of tools) {
+        if (tool === clickedTool) {
+          really.classList.remove('hidden')
+          tool.classList.add('selected')
+          info.textContent = `You did ${tool.id}. You sure?`
+        } else {
+          tool.classList.remove('selected')
+        }
+      }
+    }
+
+    function play() {
+      tools.forEach(tool => tool.classList.add('noclick'))
+      const tool = document.querySelector('.selected')
+      const computerTool = tools[Math.floor(Math.random() * 3)]
+
+      computerTool.classList.add('selected', 'computer')
+      really.classList.add('hidden')
+      repeat.classList.remove('hidden')
+      info.textContent = `${tool.id} VS. ${computerTool.id}... `
+
+      scissors.next = paper
+      paper.next = rock
+      rock.next = scissors
+
+      if (tool === computerTool) {
+        info.textContent += 'It\'s a draw'
+      } else if (tool.next === computerTool) {
+        info.textContent += 'You WIN! 🥳'
+      } else {
+        info.textContent += 'You LOSE 💀'
+      }
+    }
+
+  </script>
+</body>
+
+</html>
