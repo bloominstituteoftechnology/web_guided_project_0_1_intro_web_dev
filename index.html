@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
   <style>
     * {
       font-size: 1.2em;
@@ -15,10 +14,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .hidden {
-      display: none;
     }
 
     .tool {
@@ -36,54 +31,55 @@
     }
 
     .tool.selected.computer {
-      border-style: dashed;
+      border: 4px dashed black;
     }
 
   </style>
-  <title>Rock Paper Scissors</title>
 </head>
 
 <body>
   <div id="rock" class="tool">🪨 Rock</div>
   <div id="paper" class="tool">📃 Paper</div>
   <div id="scissors" class="tool">✂️ Scissors</div>
-  <h3 id="info"></h3>
+  <h3 id="info">Pick your tool...</h3>
 
   <script>
-    const tools = [scissors, paper, rock]
+    let tools = [scissors, paper, rock]
 
-    for (let index in tools) {
+    for (let index = 0; index < tools.length; index++) {
       tools[index].onclick = selectTool
     }
 
     function selectTool(clickEvent) {
-      const tool = clickEvent.target
+      let tool = clickEvent.target
       tool.className = 'tool selected'
-      info.textContent = `You did ${tool.id}...`
+      info.textContent = `You picked ${tool.id}...`
       setTimeout(function () { play() }, 1000)
     }
 
     function play() {
-      const tool = document.querySelector('.selected')
-      const computerTool = tools[Math.floor(Math.random() * 3)]
+      let tool = document.querySelector('.selected')
+      let computerTool = tools[Math.floor(Math.random() * 3)]
 
       computerTool.className = 'tool selected computer'
       info.textContent = `${tool.id} VS. ${computerTool.id}... `
 
-      if (tool === computerTool) {
-        info.textContent += 'It\'s a draw'
-      } else if (tool === rock) {
-        if (computerTool === scissors) info.textContent += 'You WIN! 🥳'
-        else info.textContent += 'You LOSE 💀'
-      } else if (tool === paper) {
-        if (computerTool === rock) info.textContent += 'You WIN! 🥳'
-        else info.textContent += 'You LOSE 💀'
-      } else if (tool === scissors) {
-        if (computerTool === paper) info.textContent += 'You WIN! 🥳'
-        else info.textContent += 'You LOSE 💀'
-      }
+      let result
 
-      setTimeout(function () { location.reload() }, 1500)
+      if (tool === computerTool) {
+        result = "It's a draw"
+      } else if (tool === rock && computerTool === scissors) {
+        result = 'You WIN! 🥳'
+      } else if (tool === paper && computerTool === rock) {
+        result = 'You WIN! 🥳'
+      } else if (tool === scissors && computerTool === paper) {
+        result = 'You WIN! 🥳'
+      } else {
+        result = 'You LOSE 💀'
+      }
+      info.textContent += result
+
+      setTimeout(function () { location.reload() }, 2500)
     }
 
   </script>
