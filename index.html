@@ -52,8 +52,9 @@
 
     function selectTool(clickEvent) {
       let tool = clickEvent.target
+      let toolName = tool.id
       tool.className = 'tool selected'
-      info.textContent = `You picked ${tool.id}...`
+      info.textContent = `You picked ${toolName}...`
       setTimeout(function () { play() }, 1000)
     }
 
@@ -79,7 +80,7 @@
       }
       info.textContent += result
 
-      setTimeout(function () { location.reload() }, 2500)
+      setTimeout(function () { location.reload() }, 1500)
     }
 
   </script>
