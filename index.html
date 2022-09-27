@@ -47,7 +47,7 @@
     let tools = [scissors, paper, rock]
 
     for (let index = 0; index < tools.length; index++) {
-      tools[index].onclick = function() { selectTool() }
+      tools[index].onclick = selectTool
     }
 
     function selectTool(clickEvent) {
