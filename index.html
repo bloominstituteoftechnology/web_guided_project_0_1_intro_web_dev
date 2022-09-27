@@ -31,10 +31,6 @@
       cursor: pointer;
     }
 
-    .tool.noclick {
-      pointer-events: none;
-    }
-
     .tool.selected {
       border: 4px solid black;
     }
@@ -48,73 +44,46 @@
 </head>
 
 <body>
-  <div id="rock">🪨 Rock</div>
-  <div id="paper">📃 Paper</div>
-  <div id="scissors">✂️ Scissors</div>
+  <div id="rock" class="tool">🪨 Rock</div>
+  <div id="paper" class="tool">📃 Paper</div>
+  <div id="scissors" class="tool">✂️ Scissors</div>
   <h3 id="info"></h3>
-  <button id="really">Yes</button>
-  <button id="repeat">Play again</button>
 
   <script>
     const tools = [scissors, paper, rock]
-    const hiddens = [repeat, really]
-    const empties = [info]
 
-    resetGame()
-    addClickBehaviors()
-
-    function resetGame() {
-      for (let tool of tools) {
-        tool.className = 'tool'
-      }
-      for (let empty of empties) {
-        empty.textContent = ''
-      }
-      for (let hidden of hiddens) {
-        hidden.className = 'hidden'
-      }
-    }
-
-    function addClickBehaviors() {
-      tools.forEach(tool => tool.addEventListener('click', selectTool))
-      repeat.addEventListener('click', resetGame)
-      really.addEventListener('click', play)
+    for (let index in tools) {
+      tools[index].onclick = selectTool
     }
 
     function selectTool(clickEvent) {
-      const clickedTool = clickEvent.target
-      for (let tool of tools) {
-        if (tool === clickedTool) {
-          really.classList.remove('hidden')
-          tool.classList.add('selected')
-          info.textContent = `You did ${tool.id}. You sure?`
-        } else {
-          tool.classList.remove('selected')
-        }
-      }
+      const tool = clickEvent.target
+      tool.className = 'tool selected'
+      info.textContent = `You did ${tool.id}...`
+      setTimeout(function () { play() }, 1000)
     }
 
     function play() {
-      tools.forEach(tool => tool.classList.add('noclick'))
       const tool = document.querySelector('.selected')
       const computerTool = tools[Math.floor(Math.random() * 3)]
 
-      computerTool.classList.add('selected', 'computer')
-      really.classList.add('hidden')
-      repeat.classList.remove('hidden')
+      computerTool.className = 'tool selected computer'
       info.textContent = `${tool.id} VS. ${computerTool.id}... `
-
-      scissors.next = paper
-      paper.next = rock
-      rock.next = scissors
 
       if (tool === computerTool) {
         info.textContent += 'It\'s a draw'
-      } else if (tool.next === computerTool) {
-        info.textContent += 'You WIN! 🥳'
-      } else {
-        info.textContent += 'You LOSE 💀'
+      } else if (tool === rock) {
+        if (computerTool === scissors) info.textContent += 'You WIN! 🥳'
+        else info.textContent += 'You LOSE 💀'
+      } else if (tool === paper) {
+        if (computerTool === rock) info.textContent += 'You WIN! 🥳'
+        else info.textContent += 'You LOSE 💀'
+      } else if (tool === scissors) {
+        if (computerTool === paper) info.textContent += 'You WIN! 🥳'
+        else info.textContent += 'You LOSE 💀'
       }
+
+      setTimeout(function () { location.reload() }, 1500)
     }
 
   </script>
