@@ -51,7 +51,7 @@
       tools[index].onclick = selectTool
     }
 
-    function selectTool(clickEvent) {
+    function selectTool(clickEvent) { // { target: { id: 'rock', etc }, etc }
       let tool = clickEvent.target
       let toolName = tool.id
       tool.className = 'tool selected'
