@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors</title>
+  <style>
+    * {
+      font-size: 1.2em;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tool {
+      border-radius: 50%;
+      padding: 0.4rem;
+      margin: 0.2rem;
+      border: 4px solid white;
+    }
+
+    .tool:hover {
+      cursor: pointer;
+    }
+
+    .tool.selected {
+      border-color: black;
+    }
+
+    .tool.selected.computer {
+      border-style: dashed;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="rock" class="tool">🪨 Rock</div>
+  <div id="paper" class="tool">📃 Paper</div>
+  <div id="scissors" class="tool">✂️ Scissors</div>
+  <h3 id="info">Pick your tool...</h3>
+
+  <script>
+    let tools = [scissors, paper, rock]
+
+    for (let index = 0; index < tools.length; index++) {
+      tools[index].onclick = selectTool
+    }
+
+    function selectTool(clickEvent) { // { target: { id: 'rock', etc }, etc }
+      let tool = clickEvent.target
+      let toolName = tool.id
+      tool.className = 'tool selected'
+      info.textContent = `You picked ${toolName}...`
+      setTimeout(function () { play() }, 1000)
+    }
+
+    function play() {
+      let tool = document.querySelector('.selected')
+      let computerTool = tools[Math.floor(Math.random() * 3)]
+
+      computerTool.className = 'tool selected computer'
+      info.textContent = `${tool.id} VS. ${computerTool.id}... `
+
+      let result
+
+      if (tool === computerTool) {
+        result = "It's a draw"
+      } else if (tool === rock && computerTool === scissors) {
+        result = 'You WIN! 🥳'
+      } else if (tool === paper && computerTool === rock) {
+        result = 'You WIN! 🥳'
+      } else if (tool === scissors && computerTool === paper) {
+        result = 'You WIN! 🥳'
+      } else {
+        result = 'You LOSE 💀'
+      }
+      info.textContent += result
+
+      setTimeout(function () { location.reload() }, 1500)
+    }
+
+  </script>
+</body>
+
+</html>
