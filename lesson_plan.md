@@ -34,4 +34,5 @@
   - Change the text content of the message
   - Main conditional logic
 - Improving the flow with `setTimeout`
-- Looping over the tools to avoid repetitive code
+- Looping over the tools to avoid repetitive code **7- SIDE VIDEO arrays and for loops**
+- That's all folks
