@@ -2,15 +2,14 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
   <title>Rock Paper Scissors</title>
   <style>
     * {
-      font-size: 1.2em;
-      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.5rem;
     }
 
     body {
+      font-family: 'Times New Roman', Times, serif;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -51,19 +50,19 @@
       tools[index].onclick = selectTool
     }
 
-    function selectTool(clickEvent) { // { target: { id: 'rock', etc }, etc }
+    function selectTool(clickEvent) {
       let tool = clickEvent.target
-      let toolName = tool.id
       tool.className = 'tool selected'
-      info.textContent = `You picked ${toolName}...`
-      setTimeout(function () { play() }, 1000)
+      info.textContent = `You picked ${tool.id}...`
+      setTimeout(function () {
+        play(tool)
+      }, 1000)
     }
 
-    function play() {
-      let tool = document.querySelector('.selected')
+    function play(tool) {
       let computerTool = tools[Math.floor(Math.random() * 3)]
-
       computerTool.className = 'tool selected computer'
+
       info.textContent = `${tool.id} VS. ${computerTool.id}... `
 
       let result
@@ -80,8 +79,6 @@
         result = 'You LOSE 💀'
       }
       info.textContent += result
-
-      setTimeout(function () { location.reload() }, 1500)
     }
 
   </script>

@@ -1,14 +1,37 @@
 # LESSON PLAN
 
-- Hey there. INFINITE POWER
+- Hey there. INFINITE POWER, FUN, PEP TALK
 - This video is split into parts
-- Download this thing.
-- Open thing in Chrome. [1- SIDE VIDEO]
-- Open thing in VSCode. [2- SIDE VIDEO]
-- HTML & CSS primer
+- There are "side videos" you can watch
+- What are we building, demo
+- Project setup
+  - Download this html doc
+  - Open file in Chrome. **1- SIDE VIDEO install Chrome**
+  - Open file in VSCode. **2- SIDE VIDEO install VSCode**
+- Structure of HTML document
+  - The body: elements, tags, attributes, ids, classes, text contents
+  - The head: title, style
+- The style tag
+- CSS & Styles Dev Tools
 - Play with the cascade a little bit using color
 - Play with inheritable and non-inheritable CSS using border
-- Data types
-- Objects [3- SIDE VIDEO]
-- Console.log all the things
-- Strings and template literals [4- SIDE VIDEO]
+- The script tag
+- The console, and console.log
+- Scalar values and data types
+- Variables to store or reference data
+- Objects **3- SIDE VIDEO objects deep dive**
+- The rock object, log it out, log its id, text content (accessing props)
+- The rock object, set its text content, class names (setting props)
+- Functions **4- SIDE VIDEO functions deep dive**
+- The `selectTool` function
+  - Grab the clicked element, log out id
+  - Change the text content of the h3 **5- SIDE VIDEO template literals**
+  - Change the class name of the tool
+  - Write CSS to target the selected tool and add border
+- The `play` function
+  - Selecting a tool for the computer **6- SIDE VIDEO the Math object**
+  - Adjust the class name of the computer tool and add CSS to match
+  - Change the text content of the message
+  - Main conditional logic
+- Improving the flow with `setTimeout`
+- Looping over the tools to avoid repetitive code
