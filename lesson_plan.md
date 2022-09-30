@@ -3,7 +3,7 @@
 - Hey there. INFINITE POWER, FUN, PEP TALK
 - This video is split into parts
 - There are "side videos" you can watch
-- What are we building, demo
+- What are we building, demo, HTML & CSS & JS in action!
 - Project setup
   - Download this html doc
   - Open file in Chrome. **1- SIDE VIDEO install Chrome**
@@ -17,22 +17,22 @@
 - Play with inheritable and non-inheritable CSS using border
 - The script tag
 - The console, and console.log
-- Scalar values and data types
+- Scalar values and data types **3- SIDE VIDEO objects deep dive**
 - Variables to store or reference data
-- Objects **3- SIDE VIDEO objects deep dive**
+- Objects **4- SIDE VIDEO objects deep dive**
 - The rock object, log it out, log its id, text content (accessing props)
 - The rock object, set its text content, class names (setting props)
-- Functions **4- SIDE VIDEO functions deep dive**
+- Functions **5- SIDE VIDEO functions deep dive**
 - The `selectTool` function
   - Grab the clicked element, log out id
-  - Change the text content of the h3 **5- SIDE VIDEO template literals**
+  - Change the text content of the h3 **6- SIDE VIDEO template literals**
   - Change the class name of the tool
   - Write CSS to target the selected tool and add border
 - The `play` function
-  - Selecting a tool for the computer **6- SIDE VIDEO the Math object**
+  - Selecting a tool for the computer **7- SIDE VIDEO the Math object**
   - Adjust the class name of the computer tool and add CSS to match
   - Change the text content of the message
   - Main conditional logic
 - Improving the flow with `setTimeout`
-- Looping over the tools to avoid repetitive code **7- SIDE VIDEO arrays and for loops**
+- Looping over the tools to avoid repetitive code **8- SIDE VIDEO arrays and for loops**
 - That's all folks
