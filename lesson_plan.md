@@ -1,6 +1,8 @@
 # LESSON PLAN
 
-- Hey there. INFINITE POWER, FUN, PEP TALK
+- Hey there
+- The purpose of this video
+- Web development. fun, pep talk
 - This video is split into parts
 - There are "side videos" you can watch
 - What are we building, demo, HTML & CSS & JS in action!
